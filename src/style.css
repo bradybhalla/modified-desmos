@@ -1,0 +1,76 @@
+:root {
+  --cmd-y-pos: 15vh;
+  --cmd-width: 500px;
+  --placeholder-color: rgb(100,100,100);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  width: 100vw;
+  height: 45px;
+  background-color: rgb(40,40,40);
+}
+
+.logo {
+  text-align: center;
+  line-height: 45px;
+  color: rgb(220,220,220);
+  font-size: 24px;
+  font-family: "Monaco", monospace;
+}
+
+#calculator {
+  width: 100vw;
+  height: 100vh;
+}
+
+#cmd {
+  position: absolute;
+  top: var(--cmd-y-pos);
+  left: calc(50vw - var(--cmd-width)/2);
+  background-color: rgb(100,100,100);
+  padding: 5px;
+  border-radius: 3px;
+  display: none;
+}
+
+.input {
+  width: var(--cmd-width);
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgb(200,200,200);
+}
+
+#cmd-input {
+  font-size: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  background-color: rgb(200,200,200);
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--placeholder-color);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--placeholder-color);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--placeholder-color);
+}
+
+
+@media screen and (max-height: 450px)
+{
+    .header {
+      display: none;
+    }
+}
