@@ -13,35 +13,58 @@ $(() => {
 
   let prevFocus: JQuery | null = null;
   $(document).keydown((e) => {
-    switch (e.code){
+    switch (e.code) {
       case "Space":
         prevFocus = $(':focus');
 
         $("#cmd-input:hidden").val("");
-        if ($("#cmd:visible").length == 0) {
-          setTimeout(() => {
-            $("#cmd-input").val("");
-          }, 10);
+        if ($("#cmd-input:visible").length == 0) {
+          setTimeout(() => { $("#cmd-input").val(""); }, 10);
         }
 
         $("#cmd:hidden").fadeIn(200);
         $("#cmd-input").focus();
 
-        break
+        break;
       case "Enter":
         let input: string = ($("#cmd-input")[0] as HTMLInputElement).value.toLowerCase();
-        if (cmdManager.hasCommand(input)){
-          cmdManager.executeCommand(input, calculator);
+
+        $("#cmd").fadeOut(50);
+        $("#cmd-input").focusout();
+
+        prevFocus?.focus();
+
+        if (cmdManager.hasCommand(input)) {
+          setTimeout(() => { cmdManager.executeCommand(input, calculator); }, 10);
         }
 
-        // no break
+        break;
       case "Escape":
         $("#cmd").fadeOut(50);
         $("#cmd-input").focusout();
 
         prevFocus?.focus();
-        break
+        break;
+      default:
+        // if cmd is visible
+        // update query and results
+        break;
     }
+  });
+
+  // ask about unsaved work
+  $(window).on("beforeunload", (): number | void => {
+    for (let e of calculator.getExpressions()) {
+      if ("latex" in e) {
+        if (e.latex != "") {
+          return 0;
+        }
+      } else {
+        return 0;
+      }
+    }
+
+    // don't return anything
   });
 
 
