@@ -1,4 +1,7 @@
-export type DesmosCallback = (calc: Desmos.Calculator) => void;
+export type DesmosCallback = (
+  calc: Desmos.Calculator, // calculator instance
+  selectedIds: Set<string> // the currently selected ids (from my added multiselect)
+) => void;
 
 export type CommandInfo = {
   /** The name used to call the command */
@@ -46,11 +49,11 @@ export class CommandManager {
   /**
    * Executes the given command
    */
-  executeCommand(name: string, calc: Desmos.Calculator): void {
+  executeCommand(name: string, calc: Desmos.Calculator, selectedIds: Set<string>): void {
     if (!this._commands.has(name)) {
       throw "Command does not exist";
     }
 
-    this._commands.get(name)!.callback(calc);
+    this._commands.get(name)!.callback(calc, selectedIds);
   }
 }
