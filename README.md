@@ -10,5 +10,11 @@ Command Palette
   - Press `enter` to execute the command
 
 Multi-select
-  - Hold shift while clicking on equations to select multiple
+  - Hold `shift` while clicking on equations to select multiple
   - Commands can run on multiple equations at one
+
+## Setup
+`
+$ npm install
+$ npm run dev
+`
