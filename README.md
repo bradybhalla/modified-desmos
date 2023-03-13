@@ -10,8 +10,8 @@ Command Palette
   - Press `enter` to execute the command
 
 Multi-select
-  - Hold `shift` while clicking on equations to select multiple
-  - Commands can run on multiple equations at one
+  - Hold `shift` while clicking expressions
+  - Commands can run on multiple expressions at once
 
 ## Setup
 ```bash
