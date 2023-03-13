@@ -14,7 +14,7 @@ Multi-select
   - Commands can run on multiple equations at one
 
 ## Setup
-`
+```bash
 $ npm install
 $ npm run dev
-`
+```
