@@ -13,8 +13,10 @@ function createResult(command: CommandInfo, id: number): JQuery<HTMLElement> {
   return res;
 }
 
+
 $(() => {
-  let calculator = Desmos.GraphingCalculator($("#calculator")[0]);
+
+  let calculator =  Desmos.GraphingCalculator($("#calculator")[0]);
 
   // load commands
   let cmdManager: CommandManager = new CommandManager;

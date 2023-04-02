@@ -5,7 +5,7 @@ Desmos with a few add-ons.
 ## Features
 
 Command Palette
-  - Press  `space` to open
+  - Press `space` to open (`shift+space` inserts a space)
   - Type and use arrow keys to select a command
   - Press `enter` to execute the command
 
