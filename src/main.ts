@@ -1,7 +1,9 @@
 import $ from "jquery";
 
 import { CommandInfo, CommandManager } from "./commandManager";
-import * as Default from "./packages/default";
+import * as General from "./packages/general";
+import * as Greek from "./packages/greek";
+import * as Symbolic from "./packages/symbolic";
 import * as Lols from "./packages/lols";
 
 import "./style.css";
@@ -9,19 +11,21 @@ import "./style.css";
 function createResult(command: CommandInfo, id: number): JQuery<HTMLElement> {
   let res = $("<div></div>").attr("id", `command-${id}`).addClass("result-command");
   res.html(command.description);
-  res.data("name", command.name);
   return res;
 }
 
 
 $(() => {
 
-  let calculator =  Desmos.GraphingCalculator($("#calculator")[0]);
+  let calculator = Desmos.GraphingCalculator($("#calculator")[0]);
 
   // load commands
   let cmdManager: CommandManager = new CommandManager;
-  cmdManager.load(Default.commands);
+  cmdManager.load(General.commands);
+  cmdManager.load(Greek.commands);
+  cmdManager.load(Symbolic.commands);
   cmdManager.load(Lols.commands);
+  cmdManager.fzfInit();
 
   // command palette
   let prevFocus: JQuery | null = null;
@@ -39,7 +43,6 @@ $(() => {
           if ($("#cmd-input:visible").length == 0) {
             setTimeout(() => { $("#cmd-input").val(""); }, 10);
           }
-
           $("#cmd:hidden").fadeIn(200);
           $("#cmd-input").focus();
         }
@@ -47,7 +50,7 @@ $(() => {
         break;
       case "Enter":
         if ($("#cmd-input").is(":focus")) {
-          let input: string = $(`#command-${selectedCmdId}`).data("name");
+          let input: string = $(`#command-${selectedCmdId}`).html();
 
           $("#cmd").fadeOut(50);
           $("#cmd-input").focusout();

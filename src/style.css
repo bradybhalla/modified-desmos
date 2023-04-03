@@ -55,14 +55,14 @@ html, body {
   background-color: rgb(200,200,200);
 }
 
-#cmd-results {
-  margin-top: 5px;
-}
-
 .result-command {
   background-color: rgb(150,150,150);
   padding: 5px;
   font-size: 18px;
+}
+
+.result-command:first-child {
+  margin-top: 5px;
 }
 
 .result-command.selected {
