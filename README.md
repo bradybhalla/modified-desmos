@@ -1,6 +1,6 @@
 # modified-desmos
 
-Desmos with a few add-ons including more available characters and symbolic math.
+Desmos with a few add-ons including more available characters and symbolic math.  Currently, the symbolic math is not the most trustworthy.
 
 ## Setup
 ```bash
